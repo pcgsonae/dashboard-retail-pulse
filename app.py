@@ -448,13 +448,13 @@ if selected == 'Retail Sales Turnover':
     st.markdown('---')
     # auxiliar dates for header
     if freq in ['Monthly']:
-      date = retail_selection_3['Date'].iloc[-1].strftime('%B %Y')
+      date = retail_selection_2['Date'].iloc[-1].strftime('%B %Y')
     elif freq in ['Quarterly']:
-      year = retail_selection_3['Date'].iloc[-1].year
-      quarter = (retail_selection_3['Date'].iloc[-1].month-1)//3+1
+      year = retail_selection_2['Date'].iloc[-1].year
+      quarter = (retail_selection_2['Date'].iloc[-1].month-1)//3+1
       date = f'{year:}Q{quarter}'
     else:
-      date = retail_selection_3['Date'].iloc[-1].strftime('%Y')
+      date = retail_selection_2['Date'].iloc[-1].strftime('%Y')
     # header
     st.header(f'Results for: {date} (last available period)')
     left, right = st.columns(2)
