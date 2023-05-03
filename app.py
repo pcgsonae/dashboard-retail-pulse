@@ -153,13 +153,13 @@ if selected == 'Retail Sales Turnover':
       max_date = st.selectbox(
         '',
         options = retail.loc[retail['Freq']=='Monthly']['Date'].unique(),
-        index = 157, 
+        index = 158, 
         format_func = lambda x: x.strftime('%b %Y'))
     elif freq in ['Quarterly']:
       max_date = st.selectbox(
         '',
         options = retail.loc[retail['Freq']=='Quarterly']['Date'].unique(),
-        index = 51,
+        index = 52,
         format_func = lambda x:  f'{x.year}Q{(x.month-1)//3+1}')
     else:
       max_date = st.selectbox(
@@ -355,7 +355,7 @@ if selected == 'Retail Sales Turnover':
                   delta_color='off')
     elif UNIT in ['vs 2019 %'] and freq in ['Monthly']:
       date = retail_selection_2['Date'].iloc[-2].strftime('%B %Y')
-      date_2 = retail_selection_2['Date'].iloc[-37].strftime('%B %Y') #Need to update every year
+      date_2 = retail_selection_2['Date'].iloc[-49].strftime('%B %Y') #Need to update every year
       with left_column:
         if np.isnan(total) == True:
           st.metric('Total Retail Sales:',
@@ -591,7 +591,7 @@ if selected == 'Retail Sales Turnover':
                    delta_color='off')
     elif UNIT in ['vs 2019 %'] and freq in ['Monthly']:
       date = retail_selection_3['Date'].iloc[-2].strftime('%B %Y')
-      date_2 = retail_selection_3['Date'].iloc[-37].strftime('%B %Y') #Need to update every year
+      date_2 = retail_selection_3['Date'].iloc[-49].strftime('%B %Y') #Need to update every year
       with left:
         if np.isnan(pt) == True:
           st.metric('Portugal:',
@@ -831,7 +831,7 @@ if selected == 'Retail Sales Turnover':
                    delta_color='off')
     elif UNIT in ['vs 2019 %'] and freq in ['Monthly']:
       date = retail_selection_2['Date'].iloc[-2].strftime('%B %Y')
-      date_2 = retail_selection_2['Date'].iloc[-37].strftime('%B %Y') #Need to update every year
+      date_2 = retail_selection_2['Date'].iloc[-49].strftime('%B %Y') #Need to update every year
       with left:
         if np.isnan(nom) == True:
           st.metric('Nominal:',
@@ -1293,13 +1293,13 @@ if selected == 'Inflation (HICP)':
       max_date = st.selectbox(
         '',
         options = hicp.loc[hicp['freq']=='Monthly']['Date'].unique(),
-        index = 157, 
+        index = 158, 
         format_func = lambda x: x.strftime('%b %Y'))
     elif freq in ['Quarterly']:
       max_date = st.selectbox(
         '',
         options = hicp.loc[hicp['freq']=='Quarterly']['Date'].unique(),
-        index = 51,
+        index = 52,
         format_func = lambda x:  f'{x.year}Q{(x.month-1)//3+1}')
     else:
       max_date = st.selectbox(
