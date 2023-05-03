@@ -381,7 +381,7 @@ if selected == 'Retail Sales Turnover':
       year = retail_selection_2['Date'].iloc[-2].year
       quarter = (retail_selection_2['Date'].iloc[-2].month-1)//3+1
       date = f'{year:}Q{quarter}'
-      year_2 = retail_selection_2['Date'].iloc[-12].year
+      year_2 = retail_selection_2['Date'].iloc[-16].year
       quarter_2 = (retail_selection_2['Date'].iloc[-1].month-1)//3+1
       date_2 = f'{year_2:}Q{quarter_2}'
       with left_column:
@@ -407,7 +407,7 @@ if selected == 'Retail Sales Turnover':
                   delta_color='off')
     elif UNIT in ['vs 2019 % (Current year YTD %)'] and freq in ['Annual']:
       date = retail_selection_2['Date'].iloc[-2].strftime('%Y')
-      date_2 = retail_selection_2['Date'].iloc[-4].strftime('%Y')
+      date_2 = retail_selection_2['Date'].iloc[-5].strftime('%Y')
       with left_column:
         if np.isnan(total) == True:
           st.metric('Total Retail Sales:',
@@ -618,7 +618,7 @@ if selected == 'Retail Sales Turnover':
       year = retail_selection_3['Date'].iloc[-2].year
       quarter = (retail_selection_3['Date'].iloc[-2].month-1)//3+1
       date = f'{year:}Q{quarter}'
-      year_2 = retail_selection_3['Date'].iloc[-12].year
+      year_2 = retail_selection_3['Date'].iloc[-16].year
       quarter_2 = (retail_selection_3['Date'].iloc[-1].month-1)//3+1
       date_2 = f'{year_2:}Q{quarter_2}'
       with left:
@@ -645,7 +645,7 @@ if selected == 'Retail Sales Turnover':
                    delta_color='off')
     elif UNIT in ['vs 2019 % (Current year YTD %)'] and freq in ['Annual']:
       date = retail_selection_3['Date'].iloc[-2].strftime('%Y')
-      date_2 = retail_selection_3['Date'].iloc[-4].strftime('%Y')
+      date_2 = retail_selection_3['Date'].iloc[-5].strftime('%Y')
       with left:
         if np.isnan(pt) == True:
           st.metric('Portugal:',
@@ -858,7 +858,7 @@ if selected == 'Retail Sales Turnover':
       year = retail_selection_2['Date'].iloc[-2].year
       quarter = (retail_selection_2['Date'].iloc[-2].month-1)//3+1
       date = f'{year:}Q{quarter}'
-      year_2 = retail_selection_2['Date'].iloc[-12].year
+      year_2 = retail_selection_2['Date'].iloc[-16].year
       quarter_2 = (retail_selection_2['Date'].iloc[-1].month-1)//3+1
       date_2 = f'{year_2:}Q{quarter_2}'
       with left:
@@ -885,7 +885,7 @@ if selected == 'Retail Sales Turnover':
                    delta_color='off')
     elif UNIT in ['vs 2019 % (Current year YTD %)'] and freq in ['Annual']:
       date = retail_selection_2['Date'].iloc[-2].strftime('%Y')
-      date_2 = retail_selection_2['Date'].iloc[-4].strftime('%Y')
+      date_2 = retail_selection_2['Date'].iloc[-5].strftime('%Y')
       with left:
         if np.isnan(nom) == True:
           st.metric('Nominal:',
