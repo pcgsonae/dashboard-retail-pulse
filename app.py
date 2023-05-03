@@ -208,7 +208,7 @@ if selected == 'Retail Sales Turnover':
     with right:
       st.subheader(f'Measurement: {indic_bt}')
     if freq in ['Annual']:
-      st.info('Year to Date considering available information until February 2023.')
+      st.info('Year to Date considering available information until March 2023.')
     #KPIs
     st.markdown('---')
     # auxiliar dates for header
@@ -443,7 +443,7 @@ if selected == 'Retail Sales Turnover':
     with right_column:
       st.subheader(f'Measurement: {indic_bt}')
     if freq in ['Annual']:
-      st.info('Year to Date considering available information until February 2023.')
+      st.info('Year to Date considering available information until March 2023.')
     #KPIs
     st.markdown('---')
     # auxiliar dates for header
@@ -683,7 +683,7 @@ if selected == 'Retail Sales Turnover':
     with right_column:
       st.subheader(f'Frequency: {freq}')
     if freq in ['Annual']:
-      st.info('Year to Date considering available information until February 2023.')
+      st.info('Year to Date considering available information until March 2023.')
     #KPIs
     st.markdown('---')
     # auxiliar dates for header
@@ -1338,7 +1338,7 @@ if selected == 'Inflation (HICP)':
       with right:
         st.subheader(f'Unit: {UNIT}')
       if freq in ['Annual']:
-        st.info('Year to Date considering available information until February 2023.')
+        st.info('Year to Date considering available information until March 2023.')
       #KPIs
       st.markdown('---')
       # auxiliar dates for header
@@ -1502,7 +1502,7 @@ if selected == 'Inflation (HICP)':
       with right_column:
         st.subheader(f'Unit: {UNIT}')
       if freq in ['Annual']:
-        st.info('Year to Date considering available information until February 2023.')
+        st.info('Year to Date considering available information until March 2023.')
       #KPIs
       st.markdown('---')
       # auxiliar dates for header
