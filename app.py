@@ -1085,7 +1085,7 @@ if selected == 'Retail Sales Turnover':
         writer.save()
         processed_data = output.getvalue()
         return processed_data
-    xlsx = convert_df_xlsx(df)
+        xlsx = convert_df_xlsx(df)
     st.download_button('Download selected data as xlsx',
                        data=xlsx, file_name='retail_data.xlsx')
     fig = go.Figure(data=go.Table(
