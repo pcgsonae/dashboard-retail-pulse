@@ -1072,21 +1072,22 @@ if selected == 'Retail Sales Turnover':
   df.sort_values(by='Date', ascending = False, inplace=True)
   #
   if query_type in ['One country, more than one product']:
-    @st.cache
-    def convert_df_xlsx(df):
-        output = BytesIO()
-        writer = pd.ExcelWriter(output, engine='xlsxwriter')
-        num_col = len(df.columns)
-        df.to_excel(writer, index=False, sheet_name='Sheet1')
-        workbook = writer.book
-        worksheet = writer.sheets['Sheet1']
-        format1 = workbook.add_format({'num_format': '0.00'})
-        worksheet.set_column(0, num_col, 30, format1)
-        writer.save()
-        processed_data = output.getvalue()
-        return processed_data
-        xlsx = convert_df_xlsx(df)
-    st.download_button('Download selected data as xlsx', data=xlsx, file_name='retail_data.xlsx')
+    #@st.cache
+    #def convert_df_xlsx(df):
+    #    output = BytesIO()
+    #    writer = pd.ExcelWriter(output, engine='xlsxwriter')
+    #    num_col = len(df.columns)
+    #    df.to_excel(writer, index=False, sheet_name='Sheet1')
+    #    workbook = writer.book
+    #    worksheet = writer.sheets['Sheet1']
+    #    format1 = workbook.add_format({'num_format': '0.00'})
+    #    worksheet.set_column(0, num_col, 30, format1)
+    #    writer.save()
+    #    processed_data = output.getvalue()
+    #    return processed_data
+    #xlsx = convert_df_xlsx(df)
+    #st.download_button('Download selected data as xlsx', 
+    #                    data=xlsx, file_name='retail_data.xlsx')
     fig = go.Figure(data=go.Table(
       header=dict(values=list(df.columns),
                   fill_color = '#99C7FF',
