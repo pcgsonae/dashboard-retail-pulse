@@ -1072,22 +1072,22 @@ if selected == 'Retail Sales Turnover':
   df.sort_values(by='Date', ascending = False, inplace=True)
   #
   if query_type in ['One country, more than one product']:
-    #@st.cache
-    #def convert_df_xlsx(df):
-    #    output = BytesIO()
-    #    writer = pd.ExcelWriter(output, engine='xlsxwriter')
-    #    num_col = len(df.columns)
-    #    df.to_excel(writer, index=False, sheet_name='Sheet1')
-    #    workbook = writer.book
-    #    worksheet = writer.sheets['Sheet1']
-    #    format1 = workbook.add_format({'num_format': '0.00'})
-    #    worksheet.set_column(0, num_col, 30, format1)
-    #    writer.save()
-    #    processed_data = output.getvalue()
-    #    return processed_data
-    #xlsx = convert_df_xlsx(df)
-    #st.download_button('Download selected data as xlsx', 
-    #                    data=xlsx, file_name='retail_data.xlsx')
+    @st.cache
+    def convert_df_xlsx(df):
+        output = BytesIO()
+        writer = pd.ExcelWriter(output, engine='xlsxwriter')
+        num_col = len(df.columns)
+        df.to_excel(writer, index=False, sheet_name='Sheet1')
+        workbook = writer.book
+        worksheet = writer.sheets['Sheet1']
+        format1 = workbook.add_format({'num_format': '0.00'})
+        worksheet.set_column(0, num_col, 30, format1)
+        writer.save()
+        processed_data = output.getvalue()
+        return processed_data
+    xlsx = convert_df_xlsx(df)
+    st.download_button('Download selected data as xlsx', 
+                        data=xlsx, file_name='retail_data.xlsx')
     fig = go.Figure(data=go.Table(
       header=dict(values=list(df.columns),
                   fill_color = '#99C7FF',
@@ -1109,22 +1109,22 @@ if selected == 'Retail Sales Turnover':
     df2 = df2.reset_index(drop=False)
     df2 = df2.rename(columns={'geo': 'Country', 'indic_bt': 'Measurement'})
     df2.sort_values(by='Date', ascending = False, inplace=True)
-    #@st.cache
-    #def convert_df_xlsx(df2):
-    #    output = BytesIO()
-    #    writer = pd.ExcelWriter(output, engine='xlsxwriter')
-    #    num_col = len(df2.columns)
-    #    df2.to_excel(writer, index=False, sheet_name='Sheet1')
-    #    workbook = writer.book
-    #    worksheet = writer.sheets['Sheet1']
-    #    format1 = workbook.add_format({'num_format': '0.0'})
-    #    worksheet.set_column(0, num_col, 30, format1)
-    #    writer.save()
-    #    processed_data = output.getvalue()
-    #    return processed_data
-    #xlsx = convert_df_xlsx(df2)
-    #st.download_button('Download selected data as xlsx',
-    #                   data=xlsx, file_name='retail_data.xlsx')
+    @st.cache
+    def convert_df_xlsx(df2):
+        output = BytesIO()
+        writer = pd.ExcelWriter(output, engine='xlsxwriter')
+        num_col = len(df2.columns)
+        df2.to_excel(writer, index=False, sheet_name='Sheet1')
+        workbook = writer.book
+        worksheet = writer.sheets['Sheet1']
+        format1 = workbook.add_format({'num_format': '0.0'})
+        worksheet.set_column(0, num_col, 30, format1)
+        writer.save()
+        processed_data = output.getvalue()
+        return processed_data
+    xlsx = convert_df_xlsx(df2)
+    st.download_button('Download selected data as xlsx',
+                       data=xlsx, file_name='retail_data.xlsx')
     fig = go.Figure(data=go.Table(
       header=dict(values=list(df2.columns),
                   fill_color = '#99C7FF',
@@ -1161,7 +1161,7 @@ if selected == 'Retail Sales Turnover':
         return processed_data
     xlsx = convert_df_xlsx(df3)
     st.download_button('Download selected data as xlsx',
-    #                   data=xlsx, file_name='retail_data.xlsx')
+                       data=xlsx, file_name='retail_data.xlsx')
     fig = go.Figure(data=go.Table(
       header=dict(values=list(df3.columns),
                   fill_color = '#99C7FF',
@@ -1781,22 +1781,22 @@ if selected == 'Inflation (HICP)':
   df.sort_values(by='Date', ascending = False, inplace=True)
   #
   if query_type in ['One country, more than one product']:
-      #@st.cache
-      #def convert_df_xlsx(df):
-      #    output = BytesIO()
-      #    writer = pd.ExcelWriter(output, engine='xlsxwriter')
-      #    num_col = len(df.columns)
-      #    df.to_excel(writer, index=False, sheet_name='Sheet1')
-      #    workbook = writer.book
-      #    worksheet = writer.sheets['Sheet1']
-      #    format1 = workbook.add_format({'num_format': '0.00'})
-      #    worksheet.set_column(0, num_col, 30, format1)
-      #    writer.save()
-      #    processed_data = output.getvalue()
-      #    return processed_data
-      #xlsx = convert_df_xlsx(df)
-      #st.download_button('Download selected data as xlsx',
-      #                   data=xlsx, file_name='hicp_data.xlsx')
+      @st.cache
+      def convert_df_xlsx(df):
+          output = BytesIO()
+          writer = pd.ExcelWriter(output, engine='xlsxwriter')
+          num_col = len(df.columns)
+          df.to_excel(writer, index=False, sheet_name='Sheet1')
+          workbook = writer.book
+          worksheet = writer.sheets['Sheet1']
+          format1 = workbook.add_format({'num_format': '0.00'})
+          worksheet.set_column(0, num_col, 30, format1)
+          writer.save()
+          processed_data = output.getvalue()
+          return processed_data
+      xlsx = convert_df_xlsx(df)
+      st.download_button('Download selected data as xlsx',
+                         data=xlsx, file_name='hicp_data.xlsx')
       fig = go.Figure(data=go.Table(
         header=dict(values=list(df.columns),
                     fill_color = '#99C7FF',
@@ -1833,7 +1833,7 @@ if selected == 'Inflation (HICP)':
           return processed_data
       xlsx = convert_df_xlsx(df2)
       st.download_button('Download selected data as xlsx',
-      #                   data=xlsx, file_name='hicp_data.xlsx')
+                         data=xlsx, file_name='hicp_data.xlsx')
       fig = go.Figure(data=go.Table(
         header=dict(values=list(df2.columns),
                     fill_color = '#99C7FF',
