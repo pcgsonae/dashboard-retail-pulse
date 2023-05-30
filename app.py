@@ -1082,7 +1082,7 @@ if selected == 'Retail Sales Turnover':
         worksheet = writer.sheets['Sheet1']
         format1 = workbook.add_format({'num_format': '0.00'})
         worksheet.set_column(0, num_col, 30, format1)
-        writer.save()
+        #writer.save()
         processed_data = output.getvalue()
         return processed_data
     xlsx = convert_df_xlsx(df)
