@@ -153,13 +153,13 @@ if selected == 'Retail Sales Turnover':
       max_date = st.selectbox(
         label = ' ',
         options = retail.loc[retail['Freq']=='Monthly']['Date'].unique(),
-        index = 160, 
+        index = 161, 
         format_func = lambda x: x.strftime('%b %Y'))
     elif freq in ['Quarterly']:
       max_date = st.selectbox(
         label = ' ',
         options = retail.loc[retail['Freq']=='Quarterly']['Date'].unique(),
-        index = 52,
+        index = 53,
         format_func = lambda x:  f'{x.year}Q{(x.month-1)//3+1}')
     else:
       max_date = st.selectbox(
