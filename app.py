@@ -86,7 +86,7 @@ if selected == 'Retail Sales Turnover':
             'Clothing and footwear', 'Computer, peripheral units and software',
             'Eletronics', 'Total food and beverages',
             'Food and beverages in specializes stores', 'Health and beauty',
-            'Hyper and supers', 'Total', 'Total non-food products']
+            'Hyper and supers', 'Total (excluding fuels)', 'Total non-food products (excluding fuels)']
   #
   if query_type in ['More than one country, one product']:
     geo = st.sidebar.multiselect(
@@ -109,7 +109,7 @@ if selected == 'Retail Sales Turnover':
     prod = st.sidebar.multiselect(
       'Select the product:',
       options=prod_list,
-      default=['Total', 'Total food and beverages', 'Total non-food products'])
+      default=['Total (excluding fuels)', 'Total food and beverages', 'Total non-food products (excluding fuels)'])
     indic_bt = st.sidebar.selectbox(
       'Select the measurement:',
       retail['indic_bt'].unique(),
@@ -223,14 +223,14 @@ if selected == 'Retail Sales Turnover':
     # header
     st.header(f'Results for: {date} (last available period)')  
     # auxiliar values for KPIs
-    total = (retail_selection_2['Total'].iloc[-1])
-    total_1 = (retail_selection_2['Total'].iloc[-2])
+    total = (retail_selection_2['Total (excluding fuels)'].iloc[-1])
+    total_1 = (retail_selection_2['Total (excluding fuels)'].iloc[-2])
     delta_total = round(total - total_1,1) 
     food = (retail_selection_2['Total food and beverages'].iloc[-1])
     food_1 = (retail_selection_2['Total food and beverages'].iloc[-2])
     delta_food = round(food - food_1,1)
-    non_food = (retail_selection_2['Total non-food products'].iloc[-1])
-    non_food_1 = (retail_selection_2['Total non-food products'].iloc[-2])
+    non_food = (retail_selection_2['Total non-food products (excluding fuels)'].iloc[-1])
+    non_food_1 = (retail_selection_2['Total non-food products (excluding fuels)'].iloc[-2])
     delta_non_food = round(non_food - non_food_1,1)
     # KPIs
     left_column, middle_column, right_column = st.columns(3)
@@ -238,12 +238,12 @@ if selected == 'Retail Sales Turnover':
       date = retail_selection_2['Date'].iloc[-2].strftime('%B %Y')
       with left_column:
         if np.isnan(total) == True:
-          st.metric('Total Retail Sales:',
+          st.metric('Total (excluding fuels) Retail Sales:',
                     f'Non disclosed info',
                     f'Updated when available',
                    delta_color='off')
         else:  
-          st.metric('Total Retail Sales:',
+          st.metric('Total (excluding fuels) Retail Sales:',
                     f'{total} YoY %',
                     f'{delta_total} p.p (vs. {date})',
                    delta_color='off')
@@ -253,7 +253,7 @@ if selected == 'Retail Sales Turnover':
                     f'{delta_food} p.p. (vs. {date})',
                    delta_color='off')
       with right_column:
-          st. metric('Total Non Food and Beverages Sales:',
+          st. metric('Total Non Food and Beverages  (excluding fuels) Sales:',
                      f'{non_food} YoY %',
                      f'{delta_non_food} p.p. (vs. {date})',
                     delta_color='off')
@@ -263,12 +263,12 @@ if selected == 'Retail Sales Turnover':
       date = f'{year:}Q{quarter}'
       with left_column:
         if np.isnan(total) == True:
-          st.metric('Total Retail Sales:',
+          st.metric('Total (excluding fuels) Retail Sales:',
                     f'Non disclosed info',
                     f'Updated when available',
                    delta_color='off')
         else:
-          st.metric('Total Retail Sales:',
+          st.metric('Total (excluding fuels) Retail Sales:',
                     f'{total} YoY %',
                     f'{delta_total} p.p (vs. {date})',
                    delta_color='off')
@@ -278,7 +278,7 @@ if selected == 'Retail Sales Turnover':
                   f'{delta_food} p.p. (vs. {date})',
                  delta_color='off')
       with right_column:
-        st. metric('Total Non Food and Beverages Sales:',
+        st. metric('Total Non Food and Beverages (excluding fuels) Sales:',
                    f'{non_food} YoY %',
                    f'{delta_non_food} p.p. (vs. {date})',
                   delta_color='off')
@@ -286,12 +286,12 @@ if selected == 'Retail Sales Turnover':
       date = retail_selection_2['Date'].iloc[-2].strftime('%Y')
       with left_column:
         if np.isnan(total) == True:
-          st.metric('Total Retail Sales:',
+          st.metric('Total (excluding fuels) Retail Sales:',
                     f'Non disclosed info',
                     f'Updated when available',
                    delta_color='off')
         else:
-          st.metric('Total Retail Sales:',
+          st.metric('Total (excluding fuels) Retail Sales:',
                     f'{total} YoY %',
                     f'{delta_total} p.p (vs. {date})',
                    delta_color='off')
@@ -301,7 +301,7 @@ if selected == 'Retail Sales Turnover':
                   f'{delta_food} p.p. (vs. {date})',
                  delta_color='off')
       with right_column:
-        st. metric('Total Non Food and Beverages Sales:',
+        st. metric('Total Non Food and Beverages (excluding fuels) Sales:',
                    f'{non_food} YoY %',
                    f'{delta_non_food} p.p. (vs. {date})',
                   delta_color='off')
@@ -309,12 +309,12 @@ if selected == 'Retail Sales Turnover':
       date = retail_selection_2['Date'].iloc[-2].strftime('%B %Y')
       with left_column:
         if np.isnan(total) == True:
-          st.metric('Total Retail Sales:',
+          st.metric('Total (excluding fuels) Retail Sales:',
                     f'Non disclosed info',
                     f'Updated when available',
                    delta_color='off')
         else:
-          st.metric('Total Retail Sales:',
+          st.metric('Total (excluding fuels) Retail Sales:',
                     f'{total} MoM %',
                     f'{delta_total} p.p (vs. {date})',
                    delta_color='off')
@@ -324,7 +324,7 @@ if selected == 'Retail Sales Turnover':
                   f'{delta_food} p.p. (vs. {date})',
                  delta_color='off')
       with right_column:
-        st. metric('Total Non Food and Beverages Sales:',
+        st. metric('Total Non Food and Beverages (excluding fuels) Sales:',
                    f'{non_food} MoM %',
                    f'{delta_non_food} p.p. (vs. {date})',
                   delta_color='off')
@@ -334,12 +334,12 @@ if selected == 'Retail Sales Turnover':
       date = f'{year:}Q{quarter}'
       with left_column:
         if np.isnan(total) == True:
-          st.metric('Total Retail Sales:',
+          st.metric('Total (excluding fuels) Retail Sales:',
                     f'Non disclosed info',
                     f'Updated when available',
                    delta_color='off')
         else:
-          st.metric('Total Retail Sales:',
+          st.metric('Total (excluding fuels) Retail Sales:',
                     f'{total} QoQ %',
                     f'{delta_total} p.p (vs. {date})',
                    delta_color='off')
@@ -349,7 +349,7 @@ if selected == 'Retail Sales Turnover':
                   f'{delta_food} p.p. (vs. {date})',
                  delta_color='off')
       with right_column:
-        st. metric('Total Non Food and Beverages Sales:',
+        st. metric('Total Non Food and Beverages (excluding fuels) Sales:',
                    f'{non_food} QoQ %',
                    f'{delta_non_food} p.p. (vs. {date})',
                   delta_color='off')
@@ -358,12 +358,12 @@ if selected == 'Retail Sales Turnover':
       date_2 = retail_selection_2['Date'].iloc[-49].strftime('%B %Y') #Need to update every year
       with left_column:
         if np.isnan(total) == True:
-          st.metric('Total Retail Sales:',
+          st.metric('Total (excluding fuels) Retail Sales:',
                     f'Non disclosed info',
                     f'Updated when available',
                    delta_color='off')
         else:
-          st.metric('Total Retail Sales:',
+          st.metric('Total (excluding fuels) Retail Sales:',
                     f'{total} % (vs. {date_2})',
                     f'{delta_total} p.p (vs. {date})',
                    delta_color='off')
@@ -373,7 +373,7 @@ if selected == 'Retail Sales Turnover':
                   f'{delta_food} p.p. (vs. {date})',
                  delta_color='off')
       with right_column:
-        st. metric('Total Non Food and Beverages Sales:',
+        st. metric('Total Non Food and Beverages (excluding fuels) Sales:',
                    f'{non_food} % (vs. {date_2})',
                    f'{delta_non_food} p.p. (vs. {date})',
                   delta_color='off')
@@ -386,12 +386,12 @@ if selected == 'Retail Sales Turnover':
       date_2 = f'{year_2:}Q{quarter_2}'
       with left_column:
         if np.isnan(total) == True:
-          st.metric('Total Retail Sales:',
+          st.metric('Total (excluding fuels) Retail Sales:',
                     f'Non disclosed info',
                     f'Updated when available',
                    delta_color='off')
         else:
-          st.metric('Total Retail Sales:',
+          st.metric('Total (excluding fuels) Retail Sales:',
                     f'{total} % (vs. {date_2})',
                     f'{delta_total} p.p (vs. {date})',
                    delta_color='off')
@@ -401,7 +401,7 @@ if selected == 'Retail Sales Turnover':
                   f'{delta_food} p.p. (vs. {date})',
                  delta_color='off')
       with right_column:
-        st. metric('Total Non Food and Beverages Sales:',
+        st. metric('Total Non Food and Beverages (excluding fuels) Sales:',
                    f'{non_food} % (vs. {date_2})',
                    f'{delta_non_food} p.p. (vs. {date})',
                   delta_color='off')
@@ -410,12 +410,12 @@ if selected == 'Retail Sales Turnover':
       date_2 = retail_selection_2['Date'].iloc[-5].strftime('%Y')
       with left_column:
         if np.isnan(total) == True:
-          st.metric('Total Retail Sales:',
+          st.metric('Total (excluding fuels) Retail Sales:',
                     f'Non disclosed info',
                     f'Updated when available',
                    delta_color='off')
         else:
-          st.metric('Total Retail Sales:',
+          st.metric('Total (excluding fuels) Retail Sales:',
                     f'{total} % (vs. {date_2})',
                     f'{delta_total} p.p (vs. {date})',
                    delta_color='off')
@@ -425,7 +425,7 @@ if selected == 'Retail Sales Turnover':
                   f'{delta_food} p.p. (vs. {date})',
                  delta_color='off')
       with right_column:
-        st. metric('Total Non Food and Beverages Sales:',
+        st. metric('Total Non Food and Beverages (excluding fuels) Sales:',
                    f'{non_food} % (vs. {date_2})',
                    f'{delta_non_food} p.p. (vs. {date})',
                   delta_color='off')      
@@ -1869,4 +1869,3 @@ hide_st_style = """
                 </style>
                 """
 st.markdown(hide_st_style, unsafe_allow_html=True)
-
