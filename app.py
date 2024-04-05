@@ -84,7 +84,7 @@ if selected == 'Retail Sales Turnover':
   st.sidebar.header('Please filter here:')
   prod_list = ['Audio and video equipment and household appliances', 'Automotive fuel',
             'Clothing and footwear', 'Computer, peripheral units and software',
-            'Eletronics', 'Total food and beverages',
+            'Total food and beverages',
             'Food and beverages in specializes stores', 'Health and beauty',
             'Hyper and supers', 'Total (excluding fuels)', 'Total non-food products (excluding fuels)']
   #
