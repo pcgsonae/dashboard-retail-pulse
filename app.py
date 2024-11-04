@@ -59,6 +59,7 @@ if selected == 'Retail Sales Turnover':
     return retail_a
   retail_a = get_a_data()
   retail = pd.concat([retail_m, retail_q, retail_a])
+  retail['Total food and beverages'] = pd.to_numeric(retail['Total food and beverages'], errors='coerce')
   tmp = retail.select_dtypes(include=[np.number])
   retail.loc[:,tmp.columns] = np.round(tmp, 1)
   #
