@@ -249,7 +249,7 @@ if selected == 'Retail Sales Turnover':
                    delta_color='off')
       with middle_column:
           st.metric('Total Food and Beverages Sales:',
-                    f'{food} YoY %',
+                    f'{round(food,1)} YoY %',
                     f'{delta_food} p.p. (vs. {date})',
                    delta_color='off')
       with right_column:
@@ -274,7 +274,7 @@ if selected == 'Retail Sales Turnover':
                    delta_color='off')
       with middle_column:
         st.metric('Total Food and Beverages Sales:',
-                  f'{food} YoY %',
+                  f'{round(food,1)} YoY %',
                   f'{delta_food} p.p. (vs. {date})',
                  delta_color='off')
       with right_column:
@@ -297,7 +297,7 @@ if selected == 'Retail Sales Turnover':
                    delta_color='off')
       with middle_column:
         st.metric('Total Food and Beverages Sales:',
-                  f'{food} YoY %',
+                  f'{round(food,1)} YoY %',
                   f'{delta_food} p.p. (vs. {date})',
                  delta_color='off')
       with right_column:
@@ -320,7 +320,7 @@ if selected == 'Retail Sales Turnover':
                    delta_color='off')
       with middle_column:
         st.metric('Total Food and Beverages Sales:',
-                  f'{food} MoM %',
+                  f'{round(food,1)} MoM %',
                   f'{delta_food} p.p. (vs. {date})',
                  delta_color='off')
       with right_column:
@@ -345,7 +345,7 @@ if selected == 'Retail Sales Turnover':
                    delta_color='off')
       with middle_column:
         st.metric('Total Food and Beverages Sales:',
-                  f'{food} QoQ %',
+                  f'{round(food,1)} QoQ %',
                   f'{delta_food} p.p. (vs. {date})',
                  delta_color='off')
       with right_column:
@@ -369,7 +369,7 @@ if selected == 'Retail Sales Turnover':
                    delta_color='off')
       with middle_column:
         st.metric('Total Food and Beverages Sales:',
-                  f'{food} % (vs. {date_2})',
+                  f'{round(food,1)} % (vs. {date_2})',
                   f'{delta_food} p.p. (vs. {date})',
                  delta_color='off')
       with right_column:
@@ -397,7 +397,7 @@ if selected == 'Retail Sales Turnover':
                    delta_color='off')
       with middle_column:
         st.metric('Total Food and Beverages Sales:',
-                  f'{food} % (vs. {date_2})',
+                  f'{round(food,1)} % (vs. {date_2})',
                   f'{delta_food} p.p. (vs. {date})',
                  delta_color='off')
       with right_column:
@@ -421,7 +421,7 @@ if selected == 'Retail Sales Turnover':
                    delta_color='off')
       with middle_column:
         st.metric('Total Food and Beverages Sales:',
-                  f'{food} % (vs. {date_2})',
+                  f'{round(food,1)} % (vs. {date_2})',
                   f'{delta_food} p.p. (vs. {date})',
                  delta_color='off')
       with right_column:
