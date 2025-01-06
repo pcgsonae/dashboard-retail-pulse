@@ -917,7 +917,7 @@ if selected == 'Retail Sales Turnover':
   col_list = ['Date', 'geo', 'indic_bt']
   columns = np.append(col_list,prod)
   df = pd.DataFrame(retail_selection, columns=columns)
-  df[prod] = df[prod].apply(pd.to_numeric, errors='coerce')
+  #df[prod] = df[prod].apply(pd.to_numeric, errors='coerce')
   #df[columns] = df.round(decimals=1)
   #
   # Plot
