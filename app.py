@@ -154,7 +154,7 @@ if selected == 'Retail Sales Turnover':
       max_date = st.selectbox(
         label = ' ',
         options = retail.loc[retail['Freq']=='Monthly']['Date'].unique(),
-        index = 180, 
+        index = 181, 
         format_func = lambda x: x.strftime('%b %Y'))
     elif freq in ['Quarterly']:
       max_date = st.selectbox(
@@ -209,7 +209,7 @@ if selected == 'Retail Sales Turnover':
     with right:
       st.subheader(f'Measurement: {indic_bt}')
     if freq in ['Annual']:
-      st.info('Year to Date considering available information until January 2025.')
+      st.info('Year to Date considering available information until February 2025.')
     #KPIs
     st.markdown('---')
     # auxiliar dates for header
@@ -444,7 +444,7 @@ if selected == 'Retail Sales Turnover':
     with right_column:
       st.subheader(f'Measurement: {indic_bt}')
     if freq in ['Annual']:
-      st.info('Year to Date considering available information until January 2025.')
+      st.info('Year to Date considering available information until February 2025.')
     #KPIs
     st.markdown('---')
     # auxiliar dates for header
@@ -684,7 +684,7 @@ if selected == 'Retail Sales Turnover':
     with right_column:
       st.subheader(f'Frequency: {freq}')
     if freq in ['Annual']:
-      st.info('Year to Date considering available information until January 2025.')
+      st.info('Year to Date considering available information until February 2025.')
     #KPIs
     st.markdown('---')
     # auxiliar dates for header
@@ -1295,7 +1295,7 @@ if selected == 'Inflation (HICP)':
       max_date = st.selectbox(
         label = ' ',
         options = hicp.loc[hicp['freq']=='Monthly']['Date'].unique(),
-        index = 179, 
+        index = 180, 
         format_func = lambda x: x.strftime('%b %Y'))
     elif freq in ['Quarterly']:
       max_date = st.selectbox(
@@ -1340,7 +1340,7 @@ if selected == 'Inflation (HICP)':
       with right:
         st.subheader(f'Unit: {UNIT}')
       if freq in ['Annual']:
-        st.info('Year to Date considering available information until January 2025.')
+        st.info('Year to Date considering available information until February 2025.')
       #KPIs
       st.markdown('---')
       # auxiliar dates for header
@@ -1504,7 +1504,7 @@ if selected == 'Inflation (HICP)':
       with right_column:
         st.subheader(f'Unit: {UNIT}')
       if freq in ['Annual']:
-        st.info('Year to Date considering available information until January 2025.')
+        st.info('Year to Date considering available information until February 2025.')
       #KPIs
       st.markdown('---')
       # auxiliar dates for header
