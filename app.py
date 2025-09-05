@@ -85,7 +85,7 @@ if selected == 'Retail Sales Turnover':
   st.sidebar.header('Please filter here:')
   prod_list = ['Automotive fuel', 'Clothing and footwear', 
             'Total food and beverages', 'Food and beverages in specializes stores', 'Health and beauty',
-            'Information and communication equipment','Other household equipment'
+            'Information and communication equipment','Other household equipment',
             'Hyper and supers', 'Total (excluding fuels)', 'Total non-food products (excluding fuels)']
   #
   if query_type in ['More than one country, one product']:
