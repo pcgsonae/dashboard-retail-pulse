@@ -153,7 +153,7 @@ if selected == 'Retail Sales Turnover':
       max_date = st.selectbox(
         label = ' ',
         options = retail.loc[retail['Freq']=='Monthly']['Date'].unique(),
-        index = 184, 
+        index = 186, 
         format_func = lambda x: x.strftime('%b %Y'))
     elif freq in ['Quarterly']:
       max_date = st.selectbox(
@@ -1294,7 +1294,7 @@ if selected == 'Inflation (HICP)':
       max_date = st.selectbox(
         label = ' ',
         options = hicp.loc[hicp['freq']=='Monthly']['Date'].unique(),
-        index = 184, 
+        index = 186, 
         format_func = lambda x: x.strftime('%b %Y'))
     elif freq in ['Quarterly']:
       max_date = st.selectbox(
