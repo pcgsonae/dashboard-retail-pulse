@@ -153,7 +153,7 @@ if selected == 'Retail Sales Turnover':
       max_date = st.selectbox(
         label = ' ',
         options = retail.loc[retail['Freq']=='Monthly']['Date'].unique(),
-        index = 191, 
+        index = 192, 
         format_func = lambda x: x.strftime('%b %Y'))
     elif freq in ['Quarterly']:
       max_date = st.selectbox(
@@ -165,7 +165,7 @@ if selected == 'Retail Sales Turnover':
       max_date = st.selectbox(
         label = ' ',
         options = retail.loc[retail['Freq']=='Annual']['Date'].unique(),
-        index = 15,
+        index = 16,
         format_func = lambda x: x.strftime('%Y'))
   date_test = max_date - min_date
   if date_test.days < 0:
@@ -208,7 +208,7 @@ if selected == 'Retail Sales Turnover':
     with right:
       st.subheader(f'Measurement: {indic_bt}')
     if freq in ['Annual']:
-      st.info('Year to Date considering available information until December 2025.')
+      st.info('Year to Date considering available information until January 2026.')
     #KPIs
     st.markdown('---')
     # auxiliar dates for header
@@ -443,7 +443,7 @@ if selected == 'Retail Sales Turnover':
     with right_column:
       st.subheader(f'Measurement: {indic_bt}')
     if freq in ['Annual']:
-      st.info('Year to Date considering available information until December 2025.')
+      st.info('Year to Date considering available information until January 2026.')
     #KPIs
     st.markdown('---')
     # auxiliar dates for header
@@ -683,7 +683,7 @@ if selected == 'Retail Sales Turnover':
     with right_column:
       st.subheader(f'Frequency: {freq}')
     if freq in ['Annual']:
-      st.info('Year to Date considering available information until December 2025.')
+      st.info('Year to Date considering available information until January 2026.')
     #KPIs
     st.markdown('---')
     # auxiliar dates for header
@@ -1294,7 +1294,7 @@ if selected == 'Inflation (HICP)':
       max_date = st.selectbox(
         label = ' ',
         options = hicp.loc[hicp['freq']=='Monthly']['Date'].unique(),
-        index = 191, 
+        index = 192, 
         format_func = lambda x: x.strftime('%b %Y'))
     elif freq in ['Quarterly']:
       max_date = st.selectbox(
@@ -1306,7 +1306,7 @@ if selected == 'Inflation (HICP)':
       max_date = st.selectbox(
         label = ' ',
         options = hicp.loc[hicp['freq']=='Annual']['Date'].unique(),
-        index = 15,
+        index = 16,
         format_func = lambda x: x.strftime('%Y'))
   #
   date_test = max_date - min_date
@@ -1339,7 +1339,7 @@ if selected == 'Inflation (HICP)':
       with right:
         st.subheader(f'Unit: {UNIT}')
       if freq in ['Annual']:
-        st.info('Year to Date considering available information until December 2025.')
+        st.info('Year to Date considering available information until January 2026.')
       #KPIs
       st.markdown('---')
       # auxiliar dates for header
@@ -1503,7 +1503,7 @@ if selected == 'Inflation (HICP)':
       with right_column:
         st.subheader(f'Unit: {UNIT}')
       if freq in ['Annual']:
-        st.info('Year to Date considering available information until December 2025.')
+        st.info('Year to Date considering available information until January 2026.')
       #KPIs
       st.markdown('---')
       # auxiliar dates for header
