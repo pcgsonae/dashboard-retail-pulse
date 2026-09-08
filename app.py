@@ -32,7 +32,7 @@ selected = option_menu(
 
 if selected == 'Retail Sales Turnover':
   ## Creat df with data 
-  @st.cache
+  @st.cache_data
   def get_m_data():
     retail_m = pd.read_excel('retail_data.xlsx', sheet_name = 'monthly')
     retail_m.Date = retail_m.Date.apply(lambda x: x.date())
@@ -40,7 +40,7 @@ if selected == 'Retail Sales Turnover':
     retail_m = retail_m[retail_m['UNIT'].str.contains('Index (2019=100)')==False]
     return retail_m
   retail_m = get_m_data()
-  @st.cache
+  @st.cache_data
   def get_q_data():
     retail_q = pd.read_excel('retail_data.xlsx', sheet_name = 'quarterly')
     retail_q.Date = retail_q.Date.apply(lambda x: x.date())
@@ -48,7 +48,7 @@ if selected == 'Retail Sales Turnover':
     retail_q = retail_q[retail_q['UNIT'].str.contains('Index (2019=100)')==False]
     return retail_q
   retail_q = get_q_data()
-  @st.cache
+  @st.cache_data
   def get_a_data():
     retail_a = pd.read_excel('retail_data.xlsx', sheet_name = 'annual')
     aux_date = retail_a['Date'].astype(str)
@@ -1073,7 +1073,7 @@ if selected == 'Retail Sales Turnover':
   df.sort_values(by='Date', ascending = False, inplace=True)
   #
   if query_type in ['One country, more than one product']:
-    @st.cache
+    @st.cache_data
     def convert_df_xlsx(df):
         output = BytesIO()
         writer = pd.ExcelWriter(output, engine='xlsxwriter')
@@ -1110,7 +1110,7 @@ if selected == 'Retail Sales Turnover':
     df2 = df2.reset_index(drop=False)
     df2 = df2.rename(columns={'geo': 'Country', 'indic_bt': 'Measurement'})
     df2.sort_values(by='Date', ascending = False, inplace=True)
-    @st.cache
+    @st.cache_data
     def convert_df_xlsx(df2):
         output = BytesIO()
         writer = pd.ExcelWriter(output, engine='xlsxwriter')
@@ -1147,7 +1147,7 @@ if selected == 'Retail Sales Turnover':
     df3 = df3.reset_index(drop=False)
     df3 = df3.rename(columns={'geo': 'Country', 'indic_bt': 'Measurement'})
     df3.sort_values(by='Date', ascending = False, inplace=True)
-    @st.cache
+    @st.cache_data
     def convert_df_xlsx(df3):
         output = BytesIO()
         writer = pd.ExcelWriter(output, engine='xlsxwriter')
@@ -1186,7 +1186,7 @@ if selected == 'Retail Sales Turnover':
   
 if selected == 'Inflation (HICP)':
   ## Creat df with data 
-  @st.cache
+  @st.cache_data
   def get_m_data():
       hicp_m = pd.read_excel('hicp_data.xlsx',
                              sheet_name='monthly', usecols = 'B:M')
@@ -1194,7 +1194,7 @@ if selected == 'Inflation (HICP)':
       hicp_m = hicp_m.drop(hicp_m[hicp_m.Date < date(2010,1,1)].index)
       return hicp_m
   hicp_m = get_m_data()
-  @st.cache
+  @st.cache_data
   def get_q_data():
       hicp_q = pd.read_excel('hicp_data.xlsx',
                              sheet_name='quarterly', usecols = 'B:M')
@@ -1204,7 +1204,7 @@ if selected == 'Inflation (HICP)':
       hicp_q = hicp_q.drop(hicp_q[hicp_q.Date < date(2010,1,1)].index)
       return hicp_q
   hicp_q = get_q_data()
-  @st.cache
+  @st.cache_data
   def get_a_data():
       hicp_a = pd.read_excel('hicp_data.xlsx',
                              sheet_name='annual', usecols = 'B:M')
@@ -1782,7 +1782,7 @@ if selected == 'Inflation (HICP)':
   df.sort_values(by='Date', ascending = False, inplace=True)
   #
   if query_type in ['One country, more than one product']:
-      @st.cache
+      @st.cache_data
       def convert_df_xlsx(df):
           output = BytesIO()
           writer = pd.ExcelWriter(output, engine='xlsxwriter')
@@ -1819,7 +1819,7 @@ if selected == 'Inflation (HICP)':
       df2 = df2.reset_index(drop=False)
       df2 = df2.rename(columns={'geo': 'Country', 'Unit': 'Unit'})
       df2.sort_values(by='Date', ascending = False, inplace=True)
-      @st.cache
+      @st.cache_data
       def convert_df_xlsx(df2):
           output = BytesIO()
           writer = pd.ExcelWriter(output, engine='xlsxwriter')
