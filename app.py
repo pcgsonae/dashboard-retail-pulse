@@ -1,5 +1,6 @@
 # Retail Sales Dashboard 
 
+import os
 import pandas as pd
 import numpy as np
 import plotly.express as px # pip install plotly-express
@@ -33,23 +34,23 @@ selected = option_menu(
 if selected == 'Retail Sales Turnover':
   ## Creat df with data 
   @st.cache_data
-  def get_m_data():
+  def get_m_data(mtime):
     retail_m = pd.read_excel('retail_data.xlsx', sheet_name = 'monthly')
     retail_m.Date = retail_m.Date.apply(lambda x: x.date())
     retail_m = retail_m.drop(retail_m[retail_m.Date < date(2010,1,1)].index)
     retail_m = retail_m[retail_m['UNIT'].str.contains('Index (2019=100)')==False]
     return retail_m
-  retail_m = get_m_data()
+  retail_m = get_m_data(os.path.getmtime('retail_data.xlsx'))
   @st.cache_data
-  def get_q_data():
+  def get_q_data(mtime):
     retail_q = pd.read_excel('retail_data.xlsx', sheet_name = 'quarterly')
     retail_q.Date = retail_q.Date.apply(lambda x: x.date())
     retail_q = retail_q.drop(retail_q[retail_q.Date < date(2010,1,1)].index)
     retail_q = retail_q[retail_q['UNIT'].str.contains('Index (2019=100)')==False]
     return retail_q
-  retail_q = get_q_data()
+  retail_q = get_q_data(os.path.getmtime('retail_data.xlsx'))
   @st.cache_data
-  def get_a_data():
+  def get_a_data(mtime):
     retail_a = pd.read_excel('retail_data.xlsx', sheet_name = 'annual')
     aux_date = retail_a['Date'].astype(str)
     retail_a['Date'] = pd.to_datetime(aux_date)
@@ -57,7 +58,7 @@ if selected == 'Retail Sales Turnover':
     retail_a = retail_a.drop(retail_a[retail_a.Date < date(2010,1,1)].index)
     retail_a = retail_a[retail_a['UNIT'].str.contains('Index (2019=100)')==False]
     return retail_a
-  retail_a = get_a_data()
+  retail_a = get_a_data(os.path.getmtime('retail_data.xlsx'))
   retail = pd.concat([retail_m, retail_q, retail_a])
   retail['Total food and beverages'] = pd.to_numeric(retail['Total food and beverages'], errors='coerce')
   tmp = retail.select_dtypes(include=[np.number])
@@ -153,19 +154,19 @@ if selected == 'Retail Sales Turnover':
       max_date = st.selectbox(
         label = ' ',
         options = retail.loc[retail['Freq']=='Monthly']['Date'].unique(),
-        index = 199, 
+        index = len(retail.loc[retail['Freq']=='Monthly']['Date'].unique())-1, 
         format_func = lambda x: x.strftime('%b %Y'))
     elif freq in ['Quarterly']:
       max_date = st.selectbox(
         label = ' ',
         options = retail.loc[retail['Freq']=='Quarterly']['Date'].unique(),
-        index = 65,
+        index = len(retail.loc[retail['Freq']=='Quarterly']['Date'].unique())-1,
         format_func = lambda x:  f'{x.year}Q{(x.month-1)//3+1}')
     else:
       max_date = st.selectbox(
         label = ' ',
         options = retail.loc[retail['Freq']=='Annual']['Date'].unique(),
-        index = 16,
+        index = len(retail.loc[retail['Freq']=='Annual']['Date'].unique())-1,
         format_func = lambda x: x.strftime('%Y'))
   date_test = max_date - min_date
   if date_test.days < 0:
@@ -1187,15 +1188,15 @@ if selected == 'Retail Sales Turnover':
 if selected == 'Inflation (HICP)':
   ## Creat df with data 
   @st.cache_data
-  def get_m_data():
+  def get_m_data(mtime):
       hicp_m = pd.read_excel('hicp_data.xlsx',
                              sheet_name='monthly', usecols = 'B:M')
       hicp_m.Date = hicp_m.Date.apply(lambda x: x.date())
       hicp_m = hicp_m.drop(hicp_m[hicp_m.Date < date(2010,1,1)].index)
       return hicp_m
-  hicp_m = get_m_data()
+  hicp_m = get_m_data(os.path.getmtime('hicp_data.xlsx'))
   @st.cache_data
-  def get_q_data():
+  def get_q_data(mtime):
       hicp_q = pd.read_excel('hicp_data.xlsx',
                              sheet_name='quarterly', usecols = 'B:M')
       aux_date = hicp_q['Date'].astype(str)
@@ -1203,9 +1204,9 @@ if selected == 'Inflation (HICP)':
       hicp_q.Date = hicp_q.Date.apply(lambda x: x.date())
       hicp_q = hicp_q.drop(hicp_q[hicp_q.Date < date(2010,1,1)].index)
       return hicp_q
-  hicp_q = get_q_data()
+  hicp_q = get_q_data(os.path.getmtime('hicp_data.xlsx'))
   @st.cache_data
-  def get_a_data():
+  def get_a_data(mtime):
       hicp_a = pd.read_excel('hicp_data.xlsx',
                              sheet_name='annual', usecols = 'B:M')
       aux_date = hicp_a['Date'].astype(str)
@@ -1213,7 +1214,7 @@ if selected == 'Inflation (HICP)':
       hicp_a.Date = hicp_a.Date.apply(lambda x: x.date())
       hicp_a = hicp_a.drop(hicp_a[hicp_a.Date < date(2010,1,1)].index)
       return hicp_a
-  hicp_a = get_a_data()
+  hicp_a = get_a_data(os.path.getmtime('hicp_data.xlsx'))
   hicp = pd.concat([hicp_m, hicp_q, hicp_a])
   tmp = hicp.select_dtypes(include=[np.number])
   hicp.loc[:,tmp.columns] = np.round(tmp, 1)
@@ -1294,19 +1295,19 @@ if selected == 'Inflation (HICP)':
       max_date = st.selectbox(
         label = ' ',
         options = hicp.loc[hicp['freq']=='Monthly']['Date'].unique(),
-        index = 199, 
+        index = len(hicp.loc[hicp['freq']=='Monthly']['Date'].unique())-1, 
         format_func = lambda x: x.strftime('%b %Y'))
     elif freq in ['Quarterly']:
       max_date = st.selectbox(
         label = ' ',
         options = hicp.loc[hicp['freq']=='Quarterly']['Date'].unique(),
-        index = 65,
+        index = len(hicp.loc[hicp['freq']=='Quarterly']['Date'].unique())-1,
         format_func = lambda x:  f'{x.year}Q{(x.month-1)//3+1}')
     else:
       max_date = st.selectbox(
         label = ' ',
         options = hicp.loc[hicp['freq']=='Annual']['Date'].unique(),
-        index = 16,
+        index = len(hicp.loc[hicp['freq']=='Annual']['Date'].unique())-1,
         format_func = lambda x: x.strftime('%Y'))
   #
   date_test = max_date - min_date
